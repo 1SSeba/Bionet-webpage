@@ -1,0 +1,38 @@
+---
+const defaultCoordinates = { lat: 37.7749, lng: -122.4194 }; // Coordenadas predeterminadas
+const latLng = JSON.stringify(defaultCoordinates);
+---
+
+<div id="map" style="height: 400px; width: 100%;"></div>
+
+<script type="text/javascript">
+  function loadGoogleMapsScript(callback) {
+    if (window.google && window.google.maps) {
+      callback();
+    } else {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB6jV5wkpPnXbqXjCm3AxIfwhbnGKvsoH4&callback=${callback.name}`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  }
+
+  function initMap() {
+    // Parse JSON string to get coordinates
+    const latLng = JSON.parse('${latLng}');
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      center: latLng,
+      zoom: 15
+    });
+
+    new google.maps.Marker({
+      position: latLng,
+      map: map,
+      title: "Default Location"
+    });
+  }
+
+  loadGoogleMapsScript(initMap);
+</script>

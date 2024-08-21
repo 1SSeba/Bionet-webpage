@@ -1,0 +1,27 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GPSLocation from '../components/GpsCords.astro';
+import GoogleMap from '../components/GoogleMap.astro'; // Asegúrate de que el nombre del archivo sea GoogleMap.astro
+import GoogleMap1 from '../components/GoogleMap1.astro'; // Asegúrate de que el nombre del archivo sea GoogleMap.astro
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <h1>🧑‍🚀 Hello, Astronaut!</h1>
+      <p>Welcome to your GPS data page!</p>
+	  <GPSLocation /> <!-- Usa el componente GPSLocation -->
+      <GoogleMap /> <!-- Usa el componente GoogleMap -->
+	  <GoogleMap1 /> <!-- Usa el componente GoogleMap -->
+    </main>
+    <Footer />
+  </body>
+</html>
