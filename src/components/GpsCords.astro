@@ -1,10 +1,9 @@
 ---
 // src/components/GPSComponent.astro
 
-// Fetch GPS data on the server side
 const fetchGPSData = async () => {
   try {
-    const response = await fetch('/api/get_gps_data');
+    const response = await fetch('/api/cords');
     const data = await response.json();
     return data;
   } catch (error) {
