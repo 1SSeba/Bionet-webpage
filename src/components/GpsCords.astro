@@ -3,16 +3,28 @@
 
 const fetchGPSData = async () => {
   try {
-    const response = await fetch('/api/cords');
+    const response = await fetch('https://lwonwqsqcjmfuoizjsyt.supabase.co/rest/v1/gps_data', {
+      headers: {
+        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3b253cXNxY2ptZnVvaXpqc3l0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQyMDk0NzgsImV4cCI6MjAzOTc4NTQ3OH0.1oMvwo5XtrZwYkf14ity66OqqdGRgzYTCvOAx4K5jSI', // Reemplaza con tu clave anónima
+        'Authorization': `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3b253cXNxY2ptZnVvaXpqc3l0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQyMDk0NzgsImV4cCI6MjAzOTc4NTQ3OH0.1oMvwo5XtrZwYkf14ity66OqqdGRgzYTCvOAx4K5jSI`,
+        'Accept': 'application/json'
+      }
+    });
+
+    // Verificar si la respuesta es exitosa
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const data = await response.json();
-    return data;
+    return data[0] || { lat: 'N/A', lon: 'N/A' }; // Suponiendo que los datos están en el primer registro
   } catch (error) {
     console.error('Error fetching GPS data:', error);
     return { lat: 'N/A', lon: 'N/A' };
   }
 };
 
-// Get the data on build
+// Obtén los datos en el momento de la construcción
 const gpsData = await fetchGPSData();
 ---
 
