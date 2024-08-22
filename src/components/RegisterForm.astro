@@ -3,25 +3,33 @@ const { action = "#" } = Astro.props;
 import Button from '../components/Button.astro';
 ---
 
-<form action={action} method="post" class="login-form">
+<form action={action} method="post" class="register-form">
   <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required />
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
   </div>
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required />
   </div>
-  <Button text="Login" href="#" />
+  <div class="form-group">
+    <label for="confirm-password">Confirm Password</label>
+    <input type="password" id="confirm-password" name="confirm-password" required />
+  </div>
+  <Button text="Register" href="#" />
 
-  <!-- Opción para registrarse -->
-  <div class="register-option">
-    <p>Don't have an account? <a href="/register">Register here</a></p>
+  <!-- Opción para iniciar sesión -->
+  <div class="login-option">
+    <p>Already have an account? <a href="/login">Login here</a></p>
   </div>
 </form>
 
 <style>
-  .login-form {
+  .register-form {
     max-width: 400px;
     margin: 2em auto;
     padding: 1em;
@@ -51,22 +59,22 @@ import Button from '../components/Button.astro';
     margin-top: 1em;
   }
 
-  .register-option {
+  .login-option {
     margin-top: 1em;
     text-align: center;
   }
 
-  .register-option p {
+  .login-option p {
     margin: 0;
     font-size: 0.9em;
   }
 
-  .register-option a {
+  .login-option a {
     color: #007bff;
     text-decoration: none;
   }
 
-  .register-option a:hover {
+  .login-option a:hover {
     text-decoration: underline;
   }
 </style>

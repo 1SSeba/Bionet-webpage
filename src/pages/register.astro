@@ -2,21 +2,20 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import LoginForm from '../components/LoginForm.astro';
+import RegisterForm from '../components/RegisterForm.astro'; // Nuevo componente para el formulario de registro
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={`${SITE_TITLE} - Login`} description={SITE_DESCRIPTION} />
+    <BaseHead title={`${SITE_TITLE} - Register`} description={SITE_DESCRIPTION} />
   </head>
   <body>
     <Header />
     <main>
-      <h1>Login to Your Account</h1>
-      <LoginForm action="/login" />
-
+      <h1>Create a New Account</h1>
+      <RegisterForm action="/register" /> <!-- Formulario de registro -->
     </main>
     <Footer />
   </body>
