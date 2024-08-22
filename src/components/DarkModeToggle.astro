@@ -1,0 +1,53 @@
+---
+// No se necesitan importaciones aquí
+---
+
+<button class="dark-mode-toggle" id="dark-mode-toggle">
+    <span>🌙</span>
+  </button>
+  
+  <style>
+    .dark-mode-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      transition: color 0.3s;
+    }
+  
+    .dark-mode-toggle:hover {
+      color: #ccc;
+    }
+  
+    :root {
+      --background-color: #ffffff;
+      --text-color: #000000;
+    }
+  
+    [data-theme="dark"] {
+      --background-color: #000000;
+      --text-color: #ffffff;
+    }
+  
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+  </style>
+  
+  <script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleButton = document.getElementById('dark-mode-toggle');
+  
+      toggleButton.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      });
+    });
+  </script>
+  

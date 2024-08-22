@@ -1,0 +1,63 @@
+---
+const infoItems = [
+  {
+    title: 'Quiénes Somos',
+    description: 'Somos una empresa dedicada a mejorar el transporte público con soluciones innovadoras.',
+  },
+  {
+    title: 'Nuestra Misión',
+    description: 'Proveer un servicio de alta calidad que haga el transporte más eficiente y accesible.',
+  },
+  {
+    title: 'Nuestros Valores',
+    description: 'Compromiso, Innovación, y Servicio al Cliente.',
+  },
+];
+---
+
+<section class="info-boxes">
+  <div class="info-boxes-container">
+    {infoItems.map(item => (
+      <div class="info-box">
+        <h2 class="info-box-title">{item.title}</h2>
+        <p class="info-box-description">{item.description}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .info-boxes {
+    padding: 2rem;
+    background-color: var(--gray-gradient);
+    overflow: hidden; /* Asegura que el contenido no desborde el contenedor */
+  }
+
+  .info-boxes-container {
+    display: flex;
+    justify-content: space-between; /* Espacio uniforme entre las cajas */
+    gap: 1rem; /* Espacio entre las cajas */
+  }
+
+  .info-box {
+    flex: 1; /* Las cajas ocupan el mismo ancho */
+    min-width: 30%; /* Asegura que cada caja tenga al menos el 30% del ancho del contenedor */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+    text-align: center; /* Alinea el texto al centro */
+  }
+
+  .info-box-title {
+    font-size: 1.441em;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: rgb(var(--black));
+  }
+
+  .info-box-description {
+    color: rgb(var(--gray-dark));
+  }
+</style>

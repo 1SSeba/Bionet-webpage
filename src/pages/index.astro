@@ -2,9 +2,8 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import GPSLocation from '../components/GpsCords.astro';
-import GoogleMap from '../components/GoogleMap.astro'; // Asegúrate de que el nombre del archivo sea GoogleMap.astro
-import GoogleMap1 from '../components/GoogleMap1.astro'; // Asegúrate de que el nombre del archivo sea GoogleMap.astro
+import Button from '../components/Button.astro';
+import BentoGrid from '../components/BentoGrid.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -16,11 +15,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
   <body>
     <Header />
     <main>
-      <h1>🧑‍🚀 Hello, Astronaut!</h1>
-      <p>Welcome to your GPS data page!</p>
-	  <GPSLocation /> <!-- Usa el componente GPSLocation -->
-      <GoogleMap /> <!-- Usa el componente GoogleMap -->
-	  <GoogleMap1 /> <!-- Usa el componente GoogleMap -->
+      <h1>Protege tus pertenencias con Bionet</h1>
+      <h2>Rastrea tus objetos valiosos con precisión en tiempo real</h2>
+      <Button text="Ver Ubicación" />
+
+      <!-- Componente de BentoGrid -->
+      <BentoGrid />
     </main>
     <Footer />
   </body>
