@@ -1,0 +1,76 @@
+---
+const mapCenter = { lat: -33.4489, lng: -70.6693 };  // Coordenadas de Santiago, Chile
+const markerPosition = { lat: -33.4489, lng: -70.6693 };  // Coordenadas del marcador
+---
+
+<div id="map" data-lat={mapCenter.lat} data-lng={mapCenter.lng}></div>
+
+<style>
+  #map {
+    height: 500px;  /* Altura del mapa */
+    width: 100%;    /* Ancho del mapa */
+    margin: 0 auto; /* Centrar el mapa */
+    border-radius: 8px;
+  }
+</style>
+
+<script type="module">
+  const API_KEY = 'AIzaSyB6jV5wkpPnXbqXjCm3AxIfwhbnGKvsoH4'; // Reemplaza con tu clave API válida
+
+  function loadGoogleMapsScript() {
+    return new Promise((resolve, reject) => {
+      if (window.google && window.google.maps) {
+        resolve();
+        return;
+      }
+
+      const existingScript = document.querySelector('script[src*="maps.googleapis.com"]');
+      if (existingScript) {
+        existingScript.addEventListener('load', resolve);
+        existingScript.addEventListener('error', reject);
+      } else {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+
+        script.onload = resolve;
+        script.onerror = reject;
+      }
+    });
+  }
+
+  function initMap() {
+    const mapElement = document.getElementById('map');
+    const lat = parseFloat(mapElement.getAttribute('data-lat'));
+    const lng = parseFloat(mapElement.getAttribute('data-lng'));
+
+    if (isNaN(lat) || isNaN(lng)) {
+      console.error('Coordenadas inválidas:', lat, lng);
+      return;
+    }
+
+    // Crear el mapa
+    const map = new google.maps.Map(mapElement, {
+      center: { lat, lng },
+      zoom: 12,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    // Crear un marcador
+    new google.maps.Marker({
+      position: { lat: -33.4489, lng: -70.6693 }, // Coordenadas del marcador
+      map: map,
+      title: 'Marcador en Santiago'
+    });
+  }
+
+  window.initMap = initMap;
+
+  loadGoogleMapsScript().then(() => {
+    // El mapa se inicializa en la función initMap
+  }).catch(error => {
+    console.error('Error al cargar la API de Google Maps', error);
+  });
+</script>

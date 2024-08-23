@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Map from '../components/Map.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Dashboard | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="dashboard">
+        <h1>Bienvenido al Dashboard de Bionet</h1>
+        <p>Aquí puedes ver la ubicación de tus objetos valiosos.</p>
+
+        <!-- Incluir el componente del mapa -->
+        <Map />
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .dashboard {
+    padding: 2em;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+  }
+</style>
